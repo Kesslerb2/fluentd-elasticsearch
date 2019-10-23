@@ -1,7 +1,7 @@
 FROM alpine:latest
 ENV DEPS="build-base make" \
   DEPS_RM="build-base make " \
-  GEM_NAME="fluent-plugin-elasticsearch fluent-plugin-aws-elasticsearch-service fluent-plugin-prometheus"
+  GEM_NAME="fluent-plugin-elasticsearch fluent-plugin-aws-elasticsearch-service fluent-plugin-prometheus fluent-plugin-detect-exceptions fluent-plugin-concat fluent-plugin-json-in-json-2 fluent-plugin-systemd fluent-plugin-kubernetes_metadata_filter"
 # this is required for `apk` commands to run successfully
 RUN apk update --no-cache \
   && apk upgrade --no-cache
@@ -35,9 +35,8 @@ WORKDIR /
 EXPOSE 24224 24231
 VOLUME [ "/fluentd/etc" ]
 ENTRYPOINT [ "fluentd" ]
-LABEL maintainer "Ryanoolala <ryan_goh@tech.gov.sg>"
-LABEL maintainer_secondary "zephinzer <joseph_goh@tech.gov.sg>"
-LABEL description "a production hardened image containing fluentd for use with an elasticsearch service"
-LABEL source_url "https://github.com/GovTechSG/fluentd-elasticsearch"
-LABEL dockerhub_url "https://hub.docker.com/r/govtechsg/fluentd-elasticsearch"
-LABEL usage "docker run -it govtechsg/fluentd-elasticsearch:latest"
+LABEL maintainer "Brian Kessler"
+LABEL description "An extension of govtechsg's production hardened image containing fluentd for use with an elasticsearch service and more plugins"
+LABEL source_url "https://github.com/Kesslerb2/fluentd-elasticsearch"
+LABEL dockerhub_url "https://hub.docker.com/r/kesslerb2/fluentd-elasticsearch"
+LABEL usage "docker run -it kesslerb2/fluentd-elasticsearch:latest"
